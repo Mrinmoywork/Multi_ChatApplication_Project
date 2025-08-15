@@ -1,8 +1,7 @@
 𝐉𝐚𝐯𝐚 𝐒𝐨𝐜𝐤𝐞𝐭 𝐂𝐡𝐚𝐭 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐰𝐢𝐭𝐡 𝐏𝐨𝐬𝐭𝐠𝐫𝐞𝐒𝐐𝐋
 
 📌 𝐎𝐯𝐞𝐫𝐯𝐢𝐞𝐰
-This is a multi-client real-time chat application built using Java Socket Programming for network communication and PostgreSQL for message persistence.
-It demonstrates client-server architecture, multithreading, and database integration.
+This is a multi-client real-time chat application built using Java Socket Programming for network communication and PostgreSQL for message persistence. It demonstrates client-server architecture, multithreading, and database integration.
 
 * 𝐋𝐢𝐯𝐞 𝐃𝐞𝐦𝐨 𝐋𝐢𝐧𝐤: https://drive.google.com/file/d/1fc_rExW1yxsRiwzXa7diyZ1MphXU9FHx/view?usp=sharing
 
