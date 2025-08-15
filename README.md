@@ -4,6 +4,8 @@
 This is a multi-client real-time chat application built using Java Socket Programming for network communication and PostgreSQL for message persistence.
 It demonstrates client-server architecture, multithreading, and database integration.
 
+* 𝐋𝐢𝐯𝐞 𝐃𝐞𝐦𝐨 𝐋𝐢𝐧𝐤: https://drive.google.com/file/d/1fc_rExW1yxsRiwzXa7diyZ1MphXU9FHx/view?usp=sharing
+
 🚀 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 * Real-Time Messaging – Instant communication between multiple clients.
 * Multi-Client Support – Server handles multiple connected clients simultaneously using threads.
