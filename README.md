@@ -43,11 +43,8 @@ Every message is stored in PostgreSQL for history retrieval.
 📂 𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞 𝐒𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞
 
 𝐓𝐚𝐛𝐥𝐞: 𝐦𝐞𝐬𝐬𝐚𝐠𝐞𝐬
-Column	Type	Description
-id	SERIAL PK	Unique message ID
-sender	TEXT	Name of the sender
-message	TEXT	Content of the message
-ts	TIMESTAMP	Time message was sent
+<img width="1916" height="1012" alt="image" src="https://github.com/user-attachments/assets/88797d89-f017-4041-a472-b3d0621f0668" />
+
 
 ⚙ 𝐒𝐞𝐭𝐮𝐩 𝐈𝐧𝐬𝐭𝐫𝐮𝐜𝐭𝐢𝐨𝐧𝐬
 1️⃣ Install Requirements
