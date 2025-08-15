@@ -86,6 +86,9 @@ Client 2:
 [John]: Hello!
 [You]: Hi John!
 
+<img width="1919" height="1019" alt="Screenshot 2025-08-15 191758" src="https://github.com/user-attachments/assets/d81ee742-b1b7-4ca7-ab4f-ed31e8bd20e4" />
+
+
 📌 𝐅𝐮𝐭𝐮𝐫𝐞 𝐄𝐧𝐡𝐚𝐧𝐜𝐞𝐦𝐞𝐧𝐭𝐬 𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞 𝐒𝐭𝐫𝐮𝐜𝐭𝐮𝐫𝐞
 User authentication (Login/Signup system).
 JavaFX/Swing UI for a modern interface.
