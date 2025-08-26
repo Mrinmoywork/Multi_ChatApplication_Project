@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Database {
     private static final String URL = "jdbc:postgresql://localhost:5432/chat_app";
-    private static final String USER = "postgres"; // <- change if needed
-    private static final String PASS = "1234"; // <- change if needed
+    private static final String USER = "postgres";
+    private static final String PASS = "1234";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);
