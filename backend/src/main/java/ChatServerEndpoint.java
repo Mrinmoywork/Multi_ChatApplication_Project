@@ -21,7 +21,7 @@ public class ChatServerEndpoint {
             String USER = System.getenv("DB_USER");
             String PASS = System.getenv("DB_PASS");
 
-            Connection conn = DriverManager.getConnection(URL, USER, PASS);
+            conn = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("DB connected.");
         } catch (Exception e) {
             e.printStackTrace();
