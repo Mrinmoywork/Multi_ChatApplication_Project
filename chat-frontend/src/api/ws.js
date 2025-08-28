@@ -1,10 +1,10 @@
 // src/api/ws.js
 let socket = null;
 const listeners = new Set();
-const WS_URL = "wss://multi-chatapplication-project.onrender.com/chat";
-let reconnectTimeout = null;
 
-// Create or get WebSocket connection
+// Use the deployed backend URL with the correct WebSocket path
+const WS_URL = "wss://multi-chatapplication-project.onrender.com/chat";
+
 export function getWS() {
     if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
         return socket;
@@ -12,27 +12,16 @@ export function getWS() {
 
     socket = new WebSocket(WS_URL);
 
-    socket.onopen = () => {
-        console.log("[WS] Connected");
-    };
-
-    socket.onclose = () => {
-        console.log("[WS] Closed. Reconnecting in 3 seconds...");
-        reconnectTimeout = setTimeout(getWS, 3000); // Auto-reconnect
-    };
-
-    socket.onerror = (e) => {
-        console.error("[WS] Error", e);
-        socket.close(); // ensure closure triggers reconnect
-    };
-
+    socket.onopen = () => console.log("[WS] open");
+    socket.onclose = () => console.log("[WS] close");
+    socket.onerror = (e) => console.error("[WS] error", e);
     socket.onmessage = (evt) => {
         try {
             const data = JSON.parse(evt.data);
             listeners.forEach((fn) => {
-                try { fn(data); } catch (err) { console.error(err); }
+                try { fn(data); } catch (e) { console.error(e); }
             });
-        } catch (err) {
+        } catch (e) {
             console.error("Invalid JSON from server:", evt.data);
         }
     };
@@ -40,26 +29,14 @@ export function getWS() {
     return socket;
 }
 
-// Send a message via WebSocket
 export function sendWS(obj) {
     const ws = getWS();
     const doSend = () => ws.send(JSON.stringify(obj));
-
-    if (ws.readyState === WebSocket.OPEN) {
-        doSend();
-    } else {
-        ws.addEventListener("open", doSend, { once: true });
-    }
+    if (ws.readyState === WebSocket.OPEN) doSend();
+    else ws.addEventListener("open", doSend, { once: true });
 }
 
-// Subscribe to messages
 export function subscribeWS(fn) {
     listeners.add(fn);
     return () => listeners.delete(fn);
-}
-
-// Optional: cleanup function to stop reconnecting if needed
-export function closeWS() {
-    if (reconnectTimeout) clearTimeout(reconnectTimeout);
-    if (socket) socket.close();
 }
