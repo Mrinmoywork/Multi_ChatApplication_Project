@@ -2,11 +2,13 @@
 let socket = null;
 const listeners = new Set();
 
+const WS_URL = "wss://multi-chatapplication-project.onrender.com/chat";
+
 export function getWS() {
     if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
         return socket;
     }
-    socket = new WebSocket("ws://localhost:8080/chat");
+    socket = new WebSocket(WS_URL);
 
     socket.onopen = () => console.log("[WS] open");
     socket.onclose = () => console.log("[WS] close");
