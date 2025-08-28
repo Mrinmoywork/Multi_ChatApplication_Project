@@ -1,0 +1,24 @@
+# ---------- Build stage ----------
+FROM maven:3.9-eclipse-temurin-21 AS build
+WORKDIR /app
+
+# Copy pom and download dependencies
+COPY pom.xml .
+RUN mvn -q -DskipTests dependency:go-offline
+
+# Copy source and build the JAR
+COPY src ./src
+RUN mvn -q -DskipTests package
+
+# ---------- Run stage ----------
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+
+# Copy the jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Render provides PORT env var
+ENV PORT=8080
+EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]
