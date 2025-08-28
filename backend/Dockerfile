@@ -6,7 +6,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn -q -DskipTests dependency:go-offline
 
-# Copy source and build the JAR
+# Copy source and build fat JAR
 COPY src ./src
 RUN mvn -q -DskipTests package
 
@@ -14,11 +14,12 @@ RUN mvn -q -DskipTests package
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 
-# Copy the jar from build stage
+# Copy the shaded JAR
 COPY --from=build /app/target/*.jar app.jar
 
 # Render provides PORT env var
 ENV PORT=8080
 EXPOSE 8080
 
+# Run the fat JAR
 CMD ["java", "-jar", "app.jar"]
