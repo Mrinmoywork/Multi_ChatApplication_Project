@@ -2,7 +2,7 @@
 let socket = null;
 const listeners = new Set();
 
-const WS_URL = "wss://multi-chatapplication-project.onrender.com";
+const WS_URL = "wss://multi-chatapplication-project.onrender.com/chat";
 
 export function getWS() {
     if (socket && (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING)) {
