@@ -1,9 +1,14 @@
 import jakarta.websocket.DeploymentException;
 import org.glassfish.tyrus.server.Server;
 
+import java.util.TimeZone;
+
 public class ChatServerMain {
 
     public static void main(String[] args) {
+
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata"));
+
         // Create the server on 0.0.0.0:8080
         Server server = new Server("0.0.0.0", 8080, "/", null, ChatServerEndpoint.class);
 

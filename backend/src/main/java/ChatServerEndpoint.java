@@ -3,7 +3,9 @@ import jakarta.websocket.server.ServerEndpoint;
 import org.json.JSONObject;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
 
 @ServerEndpoint("/chat")
@@ -159,11 +161,16 @@ public class ChatServerEndpoint {
             ps.executeUpdate();
         } catch (SQLException e) { e.printStackTrace(); }
 
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
+        String formattedTimestamp = sdf.format(new Date(ts.getTime()));
+
         JSONObject msg = new JSONObject()
                 .put("type", "chat")
                 .put("sender", sender)
                 .put("content", content)
-                .put("timestamp", new Timestamp(System.currentTimeMillis()).toString());
+                .put("timestamp", formattedTimestamp);
 
         broadcast(msg.toString());
     }
@@ -185,12 +192,17 @@ public class ChatServerEndpoint {
             ps.executeUpdate();
         } catch (SQLException e) { e.printStackTrace(); }
 
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"));
+        String formattedTimestamp = sdf.format(new Date(ts.getTime()));
+
         JSONObject msg = new JSONObject()
-                .put("type", "private")
+                .put("type", "chat")
                 .put("sender", sender)
-                .put("receiver", receiver)
                 .put("content", content)
-                .put("timestamp", new Timestamp(System.currentTimeMillis()).toString());
+                .put("timestamp", formattedTimestamp);
+
 
         Session r = userSessionMap.get(receiver);
         if (r != null && r.isOpen()) send(r, msg.toString());
