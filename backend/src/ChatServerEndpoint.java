@@ -16,10 +16,12 @@ public class ChatServerEndpoint {
     static {
         try {
             Class.forName("org.postgresql.Driver");
-            String DB_URL = "jdbc:postgresql://localhost:5432/social_app"; // <- update
-            String DB_USER = "postgres"; // <- update
-            String DB_PASS = "1234"; // <- update
-            conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+
+            String DB_URL = System.getenv("DATABASE_URL");
+            String DB_USER = System.getenv("DB_USER");
+            String DB_PASS = System.getenv("DB_PASS");
+
+            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             System.out.println("DB connected.");
         } catch (Exception e) {
             e.printStackTrace();
