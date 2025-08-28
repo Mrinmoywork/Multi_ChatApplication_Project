@@ -17,11 +17,11 @@ public class ChatServerEndpoint {
         try {
             Class.forName("org.postgresql.Driver");
 
-            String DB_URL = System.getenv("DATABASE_URL");
-            String DB_USER = System.getenv("DB_USER");
-            String DB_PASS = System.getenv("DB_PASS");
+            String URL = System.getenv("DATABASE_URL");
+            String USER = System.getenv("DB_USER");
+            String PASS = System.getenv("DB_PASS");
 
-            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            Connection conn = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("DB connected.");
         } catch (Exception e) {
             e.printStackTrace();
