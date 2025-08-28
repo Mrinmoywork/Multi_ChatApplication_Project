@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ChatServerMain {
     public static void main(String[] args) {
-        Server server = new Server("localhost", 8080, "/", null, ChatServerEndpoint.class);
+        Server server = new Server("0.0.0.0", 8080, "/", null, ChatServerEndpoint.class);
 
         try {
             server.start();
